@@ -7,7 +7,9 @@ names = ["Krishin", "Dominick"]
 lolnames = ["Ayuush", "Ayush"]
 triviaVal = {
     "What is the golden rule of Staples High School?":["Swipe Right","Don't litter","Bully Dom","Get As in all ur classes"],
-    "What is Julian's favorite color?":["Red","Green","Blue","Purple"]
+    "What is the color of a fire hydrant?":["Red","Green","Blue","Purple"],
+    "Who is the principal of Staples High School?":["Stafford Thomas","Stafford Thompson","Sammy Thompson","Coleen Palmer"],
+    "What was the biggest problem in Staples High School?":["Old furniture","Coleytown mold refugees","Inconsistant grading standards","Cramped facilities"]
 }
 @bot.command()
 async def ping(ctx):
@@ -36,7 +38,7 @@ async def isSmart(ctx, name):
 async def trivia(ctx):
     boi = random.choice(list(triviaVal.keys()))
     st = ""
-    thing = triviaVal[boi]
+    thing = list(triviaVal[boi])
     print(thing)
     ruff = thing[0]
     print(ruff)
@@ -49,23 +51,30 @@ async def trivia(ctx):
         st = st+str(i+1)+". "+thing[i]+"\n"
     await ctx.send(boi+ "\n"+st)
 
-    def check(user):
-        print(ctx.message.author)
+    def check(self):
+        # print(ctx.message.author)
         print(ctx.author)
-        return (ctx.author == ctx.message.author)
+        print(self.author)
+        return (ctx.author == self.author)
 
     msg = await bot.wait_for('message',check=check)
     ans = msg.content # Set the title
-    print(ans)
-    print(rightIndex)
+    print("You entered "+str(ans))
+    print("The right answer is " + str(rightIndex))
     if(ans == str(rightIndex)):
         await ctx.send("Right!")
     else:
         await ctx.send("Wrong!")
 
 @bot.command()
+async def debug(ctx):
+    print(triviaVal)
+    await ctx.send("check the console.")
+
+
+@bot.command()
 async def rules(ctx, index):
-    ctx.send("There are no rules")
+    await ctx.send("There are no rules")
 
 
 bot.run('NjM0MTAyMDgwNzkzMjE1MDIy.XadoDw.6nFelnwqXln8JvVDyHLnvFeiMb8')
