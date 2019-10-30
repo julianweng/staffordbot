@@ -37,15 +37,24 @@ async def trivia(ctx):
     boi = random.choice(list(triviaVal.keys()))
     st = ""
     thing = triviaVal[boi]
+    print(thing)
     ruff = thing[0]
+    print(ruff)
     rightIndex = 0
     random.shuffle(thing)
     for i in range(len(thing)):
         if(thing[i]==ruff):
+            print(thing[i])
             rightIndex = i+1
         st = st+str(i+1)+". "+thing[i]+"\n"
     await ctx.send(boi+ "\n"+st)
-    msg = await bot.wait_for('message')
+
+    def check(user):
+        print(ctx.message.author)
+        print(ctx.author)
+        return (ctx.author == ctx.message.author)
+
+    msg = await bot.wait_for('message',check=check)
     ans = msg.content # Set the title
     print(ans)
     print(rightIndex)
