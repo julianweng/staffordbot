@@ -26,6 +26,6 @@ class Info(commands.Cog):
         else:
             await ctx.send("**"+name + " is sort of smart*")
     @commands.command()
-    async def rules(self, ctx, index):
+    async def rules(self, ctx):
         await ctx.send("There are no rules")
   

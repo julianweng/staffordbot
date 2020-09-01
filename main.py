@@ -10,4 +10,4 @@ bot = commands.Bot(command_prefix='s.',description='StaffordBot - The only bot t
 bot.add_cog(Info(bot))
 bot.add_cog(Games(bot))
 
-bot.run('NjM0MTAyMDgwNzkzMjE1MDIy.XadoDw.6nFelnwqXln8JvVDyHLnvFeiMb8')
+bot.run('banana') #placeholder token

@@ -5,13 +5,19 @@ import json
 
 with open('trivias.json', 'r') as fp:
     triviaVal = json.load(fp)
+
 class Games(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
     @commands.command(brief="Gives you a trivia question regarding Staples High School")
     async def trivia(self,ctx):
+        if("past" not in locals() and "past" not in globals()):
+            past = "baloney"
         boi = random.choice(list(triviaVal.keys()))
+        while(boi == past):
+            boi = random.choice(list(triviaVal.keys()))
+        past = boi
         st = ""
         thing = list(triviaVal[boi])
         print(thing)
